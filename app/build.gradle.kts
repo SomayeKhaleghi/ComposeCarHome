@@ -66,5 +66,6 @@ dependencies {
 
    // For app icons (Coil or Glide)
     implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("androidx.compose.animation:animation")
 
 }
