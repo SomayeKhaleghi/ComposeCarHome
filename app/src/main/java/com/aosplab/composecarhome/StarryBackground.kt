@@ -1,4 +1,4 @@
-package com.so.composecarhome
+package com.aosplab.composecarhome
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.*
 import kotlin.math.sin
 import kotlin.random.Random
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.animation.core.*
 import kotlin.math.cos
 
 

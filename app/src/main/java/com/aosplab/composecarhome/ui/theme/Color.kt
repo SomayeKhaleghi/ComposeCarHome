@@ -1,4 +1,4 @@
-package com.so.composecarhome.ui.theme
+package com.aosplab.composecarhome.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
