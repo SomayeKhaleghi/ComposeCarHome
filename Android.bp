@@ -1,0 +1,43 @@
+android_app {
+    name: "ComposeCarHome",
+	sdk_version: "current",
+	srcs: [
+		"app/src/main/java/**/*.kt",
+	],
+	overrides: [
+		"Home",
+		"Launcher",
+		"Launcher2",
+		"Launcher3",
+		"Launcher3QuickStep",
+	],
+    certificate: "platform",
+    privileged: true,
+	static_libs: [
+		"mockito-target-inline-minus-junit4",
+		"android-support-compat",
+		"android-support-v4",
+		"android-support-v13",
+		"android-support-v7-appcompat",
+		"android-support-v7-cardview",
+		"android-support-v7-preference",
+		"android-support-v7-recyclerview",
+		"android-support-v14-preference",
+		"android-support-constraint-layout",
+		"android-support-constraint-layout-solver",
+		"androidx.annotation_annotation"
+    ],
+    resource_dirs: ["app/src/main/res"],
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+		enabled: false,
+    },
+	dex_preopt: {
+        enabled: false,
+    },
+	dxflags: [
+        "--multi-dex",
+		"--core-library"
+    ],
+	manifest: "app/src/main/AndroidManifest.xml",
+}
