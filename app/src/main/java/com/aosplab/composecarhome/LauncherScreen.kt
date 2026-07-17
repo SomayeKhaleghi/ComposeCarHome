@@ -1,46 +1,49 @@
-package com.so.composecarhom
+package com.aosplab.composecarhom
 
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.drawable.toBitmap
-import com.so.composecarhome.AppGridItem
-import com.so.composecarhome.MinimalAppIcon
-import com.so.composecarhome.StarryAnimatedBackground
-import com.so.composecarhome.ZenAnimatedBackground
+import com.aosplab.composecarhome.AppGridItem
+import com.aosplab.composecarhome.MinimalAppIcon
+import com.aosplab.composecarhome.StarryAnimatedBackground
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-
-import java.util.*
 
 // ---------- DATA CLASS ----------
 data class AppInfo(val name: String, val icon: Drawable?, val intent: Intent)
@@ -61,8 +64,7 @@ fun LauncherScreen() {
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        // --- 1. ANIMATED ZEN BACKGROUND (Behind everything) ---
-        //ZenAnimatedBackground()
+        // --- 1. ANIMATED BACKGROUND (Behind everything) ---
         StarryAnimatedBackground()
 
         // --- 2. PAGES (Foreground) ---
@@ -139,7 +141,7 @@ fun HomePage(apps: List<AppInfo>) {
 
         // Quick Shortcuts (Top 4 apps)
         Text(
-            text = "",
+            text = "AOSP LAB",
             fontSize = 14.sp,
             color = Color.White.copy(alpha = 0.5f),
             modifier = Modifier.padding(bottom = 16.dp)

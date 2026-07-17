@@ -1,6 +1,6 @@
 # 🚗 ComposeCarHome
 
-A modern, production-ready **Home Screen (Launcher)** for Android Automotive OS 14, built entirely with **Jetpack Compose** and **Kotlin 2.0**. 
+> **A custom launcher for Android Automotive OS 14. Built with Jetpack Compose and Kotlin 2.0. Replaces the default AOSP home screen.**
 
 This project demonstrates how to replace the default AOSP launcher with a declarative, animated, and rotary-focused UI using the latest Compose Compiler Plugin.
 
@@ -19,7 +19,7 @@ Traditional Automotive UIs relied on legacy XML and the CarUI library. This proj
 
 ## ✨ Core Features
 - **Dual-Page Layout**: 
-  - *Page 0*: Minimal Clock with "Zen" animated background (floating leaves + water ripples).
+  - *Page 0*: Minimal Clock with "Starry" animated background (floating leaves + water ripples).
   - *Page 1*: Full app drawer grid.
 - **System Integration**: Signed with AOSP `platform` keys and pushed to `/system/priv-app/` to act as the default `HOME` activity.
 - **Pure Compose Canvas**: The animated background uses zero external libraries (no Lottie, no videos)—just raw `drawOval` and `rotate` transforms.

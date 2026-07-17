@@ -1,6 +1,5 @@
-package com.so.composecarhome.ui.theme
+package com.aosplab.composecarhome.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

@@ -5,17 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "com.so.composecarhome"
+    namespace = "com.aosplab.composecarhome"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.so.composecarhome"
+        applicationId = "com.aosplab.composecarhome"
       minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -55,17 +53,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+
     debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
     implementation (libs.androidx.webkit)
 
    // For app icons (Coil or Glide)
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    //implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("androidx.compose.animation:animation")
-
 }

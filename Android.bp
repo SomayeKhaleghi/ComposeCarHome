@@ -1,6 +1,11 @@
 android_app {
     name: "ComposeCarHome",
 	sdk_version: "current",
+    min_sdk_version: "30",
+    target_sdk_version: "34",
+	
+	
+	
 	srcs: [
 		"app/src/main/java/**/*.kt",
 	],
@@ -14,19 +19,24 @@ android_app {
     certificate: "platform",
     privileged: true,
 	static_libs: [
-		"mockito-target-inline-minus-junit4",
-		"android-support-compat",
-		"android-support-v4",
-		"android-support-v13",
-		"android-support-v7-appcompat",
-		"android-support-v7-cardview",
-		"android-support-v7-preference",
-		"android-support-v7-recyclerview",
-		"android-support-v14-preference",
-		"android-support-constraint-layout",
-		"android-support-constraint-layout-solver",
-		"androidx.annotation_annotation"
+		"androidx.core_core-ktx",
+		"androidx.lifecycle_lifecycle-runtime-ktx",
+		"androidx.activity_activity-compose",
+		// Compose Libraries (correct names for AOSP 14 prebuilts)
+		"androidx.compose.ui_ui",
+		"androidx.compose.ui_ui-graphics",
+		"androidx.compose.foundation_foundation",
+		"androidx.compose.material3_material3",
+		"androidx.compose.animation_animation",
+		"androidx.webkit_webkit",
     ],
+
+	kotlincflags: [
+        "-Xplugin=prebuilts/sdk/current/androidx/m2repository/androidx/compose/compiler/compiler-hosted/1.5.9/compiler-hosted-1.5.9.jar",
+        "-P plugin:androidx.compose.compiler.plugins.kotlin:sourceInformation=true",
+        "-P plugin:androidx.compose.compiler.plugins.kotlin:liveLiterals=true",
+    ],
+
     resource_dirs: ["app/src/main/res"],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
@@ -40,4 +50,5 @@ android_app {
 		"--core-library"
     ],
 	manifest: "app/src/main/AndroidManifest.xml",
+
 }
