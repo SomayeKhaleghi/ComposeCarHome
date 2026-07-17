@@ -31,5 +31,98 @@ Traditional Automotive UIs relied on legacy XML and the CarUI library. This proj
 - **HorizontalPager** from `androidx.compose.foundation` for swipe gestures.
 - **AOSP 14** build environment (API 34).
 
-## 🧪 How to Run (The AOSP Integration)
-*(i will bring the ADB/pushing commands later here )*
+## 🧪 How to Build Each Project
+
+### ComposeCarHome (Android Automotive Launcher)
+
+A complete guide to building, deploying, and embedding the custom launcher into Android 14 Automotive.
+
+---
+## 🧪 How to Build Each Project
+
+### ComposeCarHome (Android Automotive Launcher)
+
+A complete guide to building, deploying, and embedding the custom launcher into Android 14 Automotive.
+
+---
+#### 📋 Prerequisites
+
+Before you start, ensure you have:
+
+- **AOSP 14 source tree** (Android 14) synced on your machine.
+- **Build target set** (e.g., `lunch sdk_car_x86_64-ap2a-eng`).
+- **Platform signing keys** (`platform.pk8`, `platform.x509.pem`) available in your build environment.
+- **KVM acceleration** enabled on your Linux machine (for fast emulator performance).
+
+---
+
+
+#### ⚙️ Option 1: Copy to AOSP and Build (Fastest)
+
+**Step 1: Copy the module to your AOSP source**
+
+```bash
+cp -r ComposeCarHome/ ~/aosp-ssd/device/aosp_lab
+```
+<img width="529" height="420" alt="ls_project pas" src="https://github.com/user-attachments/assets/daec5936-6b21-4e15-b5d4-3b1d5faf3822" />
+
+<img width="1619" height="1032" alt="source_vscode" src="https://github.com/user-attachments/assets/5a829123-ccdc-48e4-87f0-246fcf33f177" />
+
+** Step 2: Set up the build environment
+```bash
+cd ~/aosp-ssd
+source build/envsetup.sh
+lunch sdk_car_x86_64-ap2a-eng
+```
+<img width="534" height="394" alt="source_launch" src="https://github.com/user-attachments/assets/dd4c9e08-339f-4017-ab4a-f66d8cd52546" />
+
+
+**Step 3: Build the APK
+Navigate to the module directory and build with mm:
+```bash
+cd ~/aosp-ssd/device/aosp_lab/ComposeCarHome
+mm -j4
+```
+
+** Step 4: Locate the output APK
+The compiled APK will be placed at:
+```bash
+~/aosp-ssd/out/target/product/emulator_car64_x86_64/system/priv-app/ComposeCarHome/ComposeCarHome.apk
+```
+
+
+
+    
+## 🏗️ Build a Permanent System Image (For ROM Integration)
+This method bakes your launcher directly into system-qemu.img, making it the default even after -wipe-data.
+
+### Step 1: Ensure your Android.bp includes the overrides and certificate: "platform"
+
+(Your module should have these already; if not, add them to Android.bp).
+
+### Step 2: Build the system image
+
+From your AOSP root, run:
+```bash
+cd ~/aosp-ssd
+source build/envsetup.sh
+lunch sdk_car_x86_64-ap2a-eng
+m systemimage -j4
+```
+
+<img width="980" height="567" alt="start_build_system_image" src="https://github.com/user-attachments/assets/29cc9f3f-1588-493c-ba3e-47e69a7b6e78" />
+
+
+###Step 3: Launch the emulator with the new image
+```bash
+emulator -memory 6144 -cores 4 -gpu host -accel on
+```
+| Flag | Purpose |
+| :--- | :--- |
+| `-memory 6144` | Allocates 6GB RAM to the emulator (smooth UI). |
+| `-cores 4` | Uses 4 CPU cores. |
+| `-gpu host` | Uses your dedicated GPU (hardware acceleration). |
+| `-accel on` | Enables KVM virtualization (critical for speed). |
+
+<img width="1891" height="710" alt="run_emulator" src="https://github.com/user-attachments/assets/91c9b44d-2388-4ba3-88a6-838595977df2" />
+
