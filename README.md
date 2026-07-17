@@ -54,6 +54,19 @@ Before you start, ensure you have:
 - **Platform signing keys** (`platform.pk8`, `platform.x509.pem`) available in your build environment.
 - **KVM acceleration** enabled on your Linux machine (for fast emulator performance).
 
+#### Gettung Ready system 
+My System: Ubuntu 26.04 LTS
+```bash
+sudo apt update
+sudo apt install -y git-core gnupg flex bison build-essential zip curl zlib1g-dev libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig python3 python-is-python3 ccache
+   
+```
+
+#### Getting AOSP 14 source
+```bash
+repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b android-14.0.0_r54 --depth=1
+repo sync -c -j4 --no-tags
+```
 ---
 
 
