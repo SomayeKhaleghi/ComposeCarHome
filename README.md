@@ -124,5 +124,7 @@ emulator -memory 6144 -cores 4 -gpu host -accel on
 | `-gpu host` | Uses your dedicated GPU (hardware acceleration). |
 | `-accel on` | Enables KVM virtualization (critical for speed). |
 
-
+**Recommended command:**
+```bash
+emulator -memory 6144 -cores 4 -gpu host -accel on -no-snapshot
 
