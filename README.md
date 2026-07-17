@@ -2,13 +2,6 @@
 
 > **A custom launcher for Android Automotive OS 14. Built with Jetpack Compose and Kotlin 2.0. Replaces the default AOSP home screen.**
 
-![Platform](https://img.shields.io/badge/Platform-AAOS_14-green)
-![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-purple)
-![Compose](https://img.shields.io/badge/Jetpack_Compose-2024.09-blue)
-
-
-A modern, production-ready **Home Screen (Launcher)** for Android Automotive OS 14, built entirely with **Jetpack Compose** and **Kotlin 2.0**. 
-
 This project demonstrates how to replace the default AOSP launcher with a declarative, animated, and rotary-focused UI using the latest Compose Compiler Plugin.
 
 ![Android 14](https://img.shields.io/badge/Platform-AAOS_14-green)
