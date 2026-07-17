@@ -110,7 +110,7 @@ lunch sdk_car_x86_64-ap2a-eng
 m systemimage -j4
 ```
 
-<img width="980" height="567" alt="start_build_system_image" src="https://github.com/user-attachments/assets/29cc9f3f-1588-493c-ba3e-47e69a7b6e78" />
+<img width="615" height="449" alt="image" src="https://github.com/user-attachments/assets/5a0cc4a8-2960-49c6-9337-a4f955565412" />
 
 
 ###Step 3: Launch the emulator with the new image
