@@ -58,7 +58,6 @@ dependencies {
     implementation (libs.androidx.webkit)
 
    // For app icons (Coil or Glide)
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    //implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("androidx.compose.animation:animation")
-
 }

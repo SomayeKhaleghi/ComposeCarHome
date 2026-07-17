@@ -1,0 +1,54 @@
+android_app {
+    name: "ComposeCarHome",
+	sdk_version: "current",
+    min_sdk_version: "30",
+    target_sdk_version: "34",
+	
+	
+	
+	srcs: [
+		"app/src/main/java/**/*.kt",
+	],
+	overrides: [
+		"Home",
+		"Launcher",
+		"Launcher2",
+		"Launcher3",
+		"Launcher3QuickStep",
+	],
+    certificate: "platform",
+    privileged: true,
+	static_libs: [
+		"androidx.core_core-ktx",
+		"androidx.lifecycle_lifecycle-runtime-ktx",
+		"androidx.activity_activity-compose",
+		// Compose Libraries (correct names for AOSP 14 prebuilts)
+		"androidx.compose.ui_ui",
+		"androidx.compose.ui_ui-graphics",
+		"androidx.compose.foundation_foundation",
+		"androidx.compose.material3_material3",
+		"androidx.compose.animation_animation",
+		"androidx.webkit_webkit",
+    ],
+
+	kotlincflags: [
+        "-Xplugin=prebuilts/sdk/current/androidx/m2repository/androidx/compose/compiler/compiler-hosted/1.5.9/compiler-hosted-1.5.9.jar",
+        "-P plugin:androidx.compose.compiler.plugins.kotlin:sourceInformation=true",
+        "-P plugin:androidx.compose.compiler.plugins.kotlin:liveLiterals=true",
+    ],
+
+    resource_dirs: ["app/src/main/res"],
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+		enabled: false,
+    },
+	dex_preopt: {
+        enabled: false,
+    },
+	dxflags: [
+        "--multi-dex",
+		"--core-library"
+    ],
+	manifest: "app/src/main/AndroidManifest.xml",
+
+}
