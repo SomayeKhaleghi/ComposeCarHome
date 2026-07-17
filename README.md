@@ -124,5 +124,5 @@ emulator -memory 6144 -cores 4 -gpu host -accel on
 | `-gpu host` | Uses your dedicated GPU (hardware acceleration). |
 | `-accel on` | Enables KVM virtualization (critical for speed). |
 
-<img width="1891" height="710" alt="run_emulator" src="https://github.com/user-attachments/assets/91c9b44d-2388-4ba3-88a6-838595977df2" />
+
 
