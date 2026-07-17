@@ -54,7 +54,9 @@ Before you start, ensure you have:
 - **Platform signing keys** (`platform.pk8`, `platform.x509.pem`) available in your build environment.
 - **KVM acceleration** enabled on your Linux machine (for fast emulator performance).
 
+
 #### Gettung Ready system 
+
 My System: Ubuntu 26.04 LTS
 ```bash
 sudo apt update
@@ -81,6 +83,7 @@ cp -r ComposeCarHome/ ~/aosp-ssd/device/aosp_lab
 
 <img width="1619" height="1032" alt="source_vscode" src="https://github.com/user-attachments/assets/5a829123-ccdc-48e4-87f0-246fcf33f177" />
 
+
 ** Step 2: Set up the build environment
 ```bash
 cd ~/aosp-ssd
@@ -96,6 +99,7 @@ Navigate to the module directory and build with mm:
 cd ~/aosp-ssd/device/aosp_lab/ComposeCarHome
 mm -j4
 ```
+
 
 ** Step 4: Locate the output APK
 The compiled APK will be placed at:
