@@ -17,6 +17,7 @@ Traditional Automotive UIs relied on legacy XML and the CarUI library. This proj
 - **High Performance**: The Compose Compiler Plugin (Kotlin 2.0) enables direct skipping of redundant recompositions, keeping the Canvas animations (leaves/ripples) running at a smooth 60fps.
 - **Declarative State**: Swapping between Home and App Drawer is a single `HorizontalPager` state change.
 
+
 ## ✨ Core Features
 - **Dual-Page Layout**: 
   - *Page 0*: Minimal Clock with "Starry" animated background (floating leaves + water ripples).
