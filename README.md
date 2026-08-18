@@ -43,3 +43,109 @@ A complete guide to building, deploying, and embedding the custom launcher into 
 ```bash
 emulator -memory 6144 -cores 4 -gpu host -accel on -no-snapshot
 
+
+
+---
+## 🧪 How to Build Each Project
+
+### ComposeCarHome (Android Automotive Launcher)
+
+A complete guide to building, deploying, and embedding the custom launcher into Android 14 Automotive.
+
+---
+#### 📋 Prerequisites
+
+Before you start, ensure you have:
+
+- **AOSP 14 source tree** (Android 14) synced on your machine.
+- **Build target set** (e.g., `lunch sdk_car_x86_64-ap2a-eng`).
+- **Platform signing keys** (`platform.pk8`, `platform.x509.pem`) available in your build environment.
+- **KVM acceleration** enabled on your Linux machine (for fast emulator performance).
+
+
+#### Gettung Ready system 
+
+My System: Ubuntu 26.04 LTS
+```bash
+sudo apt update
+sudo apt install -y git-core gnupg flex bison build-essential zip curl zlib1g-dev libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig python3 python-is-python3 ccache
+   
+```
+
+#### Getting AOSP 14 source
+```bash
+repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b android-14.0.0_r54 --depth=1
+repo sync -c -j4 --no-tags
+```
+---
+
+
+#### ⚙️ Option 1: Copy to AOSP and Build (Fastest)
+
+**Step 1: Copy the module to your AOSP source**
+
+```bash
+cp -r ComposeCarHome/ ~/aosp-ssd/device/aosp_lab
+```
+<img width="529" height="420" alt="ls_project pas" src="https://github.com/user-attachments/assets/daec5936-6b21-4e15-b5d4-3b1d5faf3822" />
+
+<img width="1619" height="1032" alt="source_vscode" src="https://github.com/user-attachments/assets/5a829123-ccdc-48e4-87f0-246fcf33f177" />
+
+
+** Step 2: Set up the build environment
+```bash
+cd ~/aosp-ssd
+source build/envsetup.sh
+lunch sdk_car_x86_64-ap2a-eng
+```
+<img width="534" height="394" alt="source_launch" src="https://github.com/user-attachments/assets/dd4c9e08-339f-4017-ab4a-f66d8cd52546" />
+
+
+**Step 3: Build the APK
+Navigate to the module directory and build with mm:
+```bash
+cd ~/aosp-ssd/device/aosp_lab/ComposeCarHome
+mm -j4
+```
+
+
+** Step 4: Locate the output APK
+The compiled APK will be placed at:
+```bash
+~/aosp-ssd/out/target/product/emulator_car64_x86_64/system/priv-app/ComposeCarHome/ComposeCarHome.apk
+```
+
+
+
+    
+## 🏗️ Build a Permanent System Image (For ROM Integration)
+This method bakes your launcher directly into system-qemu.img, making it the default even after -wipe-data.
+
+### Step 1: Ensure your Android.bp includes the overrides and certificate: "platform"
+
+(Your module should have these already; if not, add them to Android.bp).
+
+### Step 2: Build the system image
+
+From your AOSP root, run:
+```bash
+cd ~/aosp-ssd
+source build/envsetup.sh
+lunch sdk_car_x86_64-ap2a-eng
+m systemimage -j4
+```
+
+<img width="615" height="449" alt="image" src="https://github.com/user-attachments/assets/5a0cc4a8-2960-49c6-9337-a4f955565412" />
+
+
+###Step 3: Launch the emulator with the new image
+```bash
+emulator -memory 6144 -cores 4 -gpu host -accel on
+```
+| Flag | Purpose |
+| :--- | :--- |
+| `-memory 6144` | Allocates 6GB RAM to the emulator (smooth UI). |
+| `-cores 4` | Uses 4 CPU cores. |
+| `-gpu host` | Uses your dedicated GPU (hardware acceleration). |
+| `-accel on` | Enables KVM virtualization (critical for speed). |
+
